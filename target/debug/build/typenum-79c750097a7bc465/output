@@ -1,0 +1,2 @@
+cargo:rustc-env=TYPENUM_BUILD_CONSTS=/home/manish/a_p_i_rust/target/debug/build/typenum-79c750097a7bc465/out/consts.rs
+cargo:rustc-env=TYPENUM_BUILD_OP=/home/manish/a_p_i_rust/target/debug/build/typenum-79c750097a7bc465/out/op.rs
