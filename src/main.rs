@@ -4,6 +4,13 @@ use rocket::http::RawStr;
 use std::path::PathBuf;
 use rocket::response::NamedFile;
 
+use std::path::Path;
+/*#[get("/<file..>")]
+fn files(file: PathBuf) -> Option<NamedFile> {
+    NamedFile::open(Path::new("static/").join(file)).ok()
+}
+*/
+
 #[get("/page/<path..>")]
 fn get_page(path: PathBuf) ->  &'static str { 
     /* ... */ 
@@ -21,7 +28,9 @@ fn hello(name : &RawStr) -> String {
     format!("Hello, {}!",name.as_str())
    
 }
-#[get("/llo/<name>/<age>/<cool>")]
+
+
+#[get("/llo/<name>/<age>/<cool>")] //http://localhost:8000/llo/tutree_database/51/51
 fn llo(name: String, age: u8, cool: u8) -> String {
     
     if cool>50 {
@@ -31,7 +40,14 @@ fn llo(name: String, age: u8, cool: u8) -> String {
     }
 }
 
+#[get("/hello?wave&<name>")] //http://localhost:8000/hello?wave&name=hj
+fn he(name: &RawStr) -> String {
+    format!("Hello, {}!", name.as_str())
+
+}
+
 fn main() {
-    rocket::ignite().mount("/", routes![ello,llo,hello, get_page]).launch();
+    
+    rocket::ignite().mount("/", routes![he]).launch();
     
 }
