@@ -1,0 +1,19 @@
+I'm nobody! Who are you?
+Are you nobody, too?
+Then there's a pair of us - don't tell!
+They'd banish us, you know.
+How dreary to be somebody!
+How pubWeb API is an API as the name suggests, it can be accessed over the web using the HTTP protocol. It is a framework that helps you to create ...
+Introduction to web APIs - Learn web development | MDN
+https://developer.mozilla.org › ... › Client-side web APIs
+02-Sep-2021 — Browser APIs are built into your web browser and are able to expose data from the browser and surrounding computer environment and do useful ...
+ASP.NET Web APIs 
+ Mysql connection fail, Error 1040: Too many connection, contact to administeraion ;
+| Rest APIs with .NET and C# - Microsoft
+https://dotnet.microsoft.com › apps › aspnet › apis
+Build secure REST APIs with C# that reach a broad range of clients, including browsers and mobile devices. Build and deploy on Linux, macOS, and Windows.
+Web APIs - Introduction - W3Schools
+https://www.w3schools.com › js_api_intro
+API stands for Application Programming Interface. A Web API is an application programming interface for the Web. A Browselic, like a frog
+To tell your name the livelong day
+To an admiring bog!

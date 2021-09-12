@@ -1,15 +1,55 @@
-#![feature(proc_macro_hygiene, decl_macro)]
+use std::env;
+use std::process;
+use a_p_i_rust::Config;
+
+fn main() {
+    // --snip--
+    let args: Vec<String> = env::args().collect();
+
+    let config = Config::new(&args).unwrap_or_else(|err| {
+        println!("Problem parsing arguments: {}", err);
+        process::exit(1);
+    });
+
+    println!("Searching for {}", config.query);
+    println!("In file {}", config.filename);
+
+    if let Err(e) = a_p_i_rust::run(config) {
+        // --snip--
+        println!("Application error: {}", e);
+
+        process::exit(1);
+    }
+}
+
+
+
+
+
+
+
+
+/*#![feature(proc_macro_hygiene, decl_macro)]
 use rocket::http::RawStr;
 #[macro_use] extern crate rocket;
 use std::path::PathBuf;
 use rocket::response::NamedFile;
-
+use std::fs::File;
+use std::io::prelude::*;
+use std::io::BufReader;
 use std::path::Path;
-/*#[get("/<file..>")]
-fn files(file: PathBuf) -> Option<NamedFile> {
-    NamedFile::open(Path::new("static/").join(file)).ok()
+#[get("/fi")]
+fn fi() -> std::io::Result<()>{
+    let mut file = File::open("/home/manish/Desktop/file1.txt")?;
+    let mut buf_reader = BufReader::new(file);
+
+    for line in buf_reader.lines() {
+        println!("{}", line?);
+    }
+    
+    Ok(())
 }
-*/
+
 
 #[get("/page/<path..>")]
 fn get_page(path: PathBuf) ->  &'static str { 
@@ -45,9 +85,38 @@ fn he(name: &RawStr) -> String {
     format!("Hello, {}!", name.as_str())
 
 }
+use rocket::response::content;
 
-fn main() {
+#[get("/")]
+fn json() -> content::Json<&'static str> {
+    content::Json("{ 'hi': 'world' }")
+}
+
+use std::io::{Write,   BufRead, Error};
+fn main() -> Result<(), Error>  {
+    let mut file = File::open("/home/manish/Desktop/file1.txt")?;
+    let mut buf_reader = BufReader::new(file);
+
+    for line in buf_reader.lines() {
+        println!("{}", line?);
+    }
     
-    rocket::ignite().mount("/", routes![he]).launch();
+    Ok(())
+    //rocket::ignite().mount("/", routes![fi]).launch();
     
 }
+
+
+/*
+fn main() -> std::io::Result<()> {
+    let mut file = File::open("/home/manish/Desktop/file1.txt")?;
+    let mut buf_reader = BufReader::new(file);
+    let mut contents = String::new();
+    buf_reader.read_to_string(&mut contents)?;
+    assert_eq!(contents, "Hello, world!\n");
+    Ok(())
+  
+    
+    
+}*/
+*/
